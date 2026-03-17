@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './common.module.css';
 import { UPLOADS_URL } from '../../utils/constants';
 
 export default function Avatar({ src, name, size = 40, isOnline = false, className = '' }) {
   const [imgError, setImgError] = useState(false);
+
+  // Reset error when src changes so new avatar loads correctly
+  useEffect(() => {
+    setImgError(false);
+  }, [src]);
 
   const getInitials = (name) => {
     if (!name) return '?';
