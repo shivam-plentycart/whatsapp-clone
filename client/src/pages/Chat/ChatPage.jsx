@@ -12,12 +12,15 @@ export default function ChatPage() {
   // Auto-open conversation passed via invite flow
   useEffect(() => {
     const conv = location.state?.openConversation;
-    if (conv) {
+    if (!conv) return;
+    // Wait for socket + context to be ready, then open conversation
+    const timer = setTimeout(() => {
       loadConversations().then(() => {
         setActiveConversation(conv);
       });
-    }
-  }, []);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [location.state?.openConversation?.id]);
 
   return (
     <div className={styles.app}>

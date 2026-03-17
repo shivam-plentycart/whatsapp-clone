@@ -20,7 +20,10 @@ export default function OTPVerify() {
   const [canResend, setCanResend] = useState(false);
 
   useEffect(() => {
-    if (isAuthenticated) navigate('/', { replace: true });
+    // Don't auto-redirect if there's a pending invite — handleSubmit will handle it
+    if (isAuthenticated && !localStorage.getItem('pending_invite')) {
+      navigate('/', { replace: true });
+    }
   }, [isAuthenticated, navigate]);
 
   useEffect(() => {
