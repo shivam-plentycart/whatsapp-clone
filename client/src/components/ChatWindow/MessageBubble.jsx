@@ -50,6 +50,7 @@ export default function MessageBubble({ message, onContextMenu, onReplyClick }) 
           ) : (
             message.content
           )}
+          <span className={styles.bubbleTail} />
         </span>
 
         {/* Meta */}

@@ -252,19 +252,25 @@
   color: var(--color-text-primary);
   white-space: pre-wrap;
   word-break: break-word;
-  display: block;
-  margin-bottom: 2px;
 }
 
-/* Message meta (time + ticks) — flows below text, aligned right */
+/* Ghost spacer — keeps timestamp from overlapping last line of text */
+.bubbleTail {
+  display: inline-block;
+  width: 56px;
+  height: 10px;
+  vertical-align: bottom;
+}
+
+/* Message meta (time + ticks) — absolute at bottom right */
 .bubbleMeta {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 3px;
-  margin-top: -2px;
-  float: right;
-  margin-left: 8px;
+  position: absolute;
+  bottom: 5px;
+  right: 7px;
 }
 
 .bubbleTime {
