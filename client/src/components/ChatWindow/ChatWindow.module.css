@@ -203,8 +203,6 @@
   position: relative;
   word-wrap: break-word;
   min-width: 80px;
-  display: inline-block;
-  width: 100%;
 }
 
 .sent .bubbleInner {
@@ -249,31 +247,24 @@
 }
 
 .bubbleText {
-  font-size: 14.5px;
-  line-height: 1.45;
+  font-size: 14.2px;
+  line-height: 1.5;
   color: var(--color-text-primary);
   white-space: pre-wrap;
   word-break: break-word;
   display: block;
+  margin-bottom: 2px;
 }
 
-/* Invisible spacer so text never hides under the time */
-.bubbleText::after {
-  content: '\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0';
-  display: inline;
-  font-size: 11px;
-}
-
-/* Message meta (time + ticks) */
+/* Message meta (time + ticks) — flows below text, aligned right */
 .bubbleMeta {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 4px;
-  position: absolute;
-  bottom: 4px;
-  right: 7px;
-  pointer-events: none;
+  gap: 3px;
+  margin-top: -2px;
+  float: right;
+  margin-left: 8px;
 }
 
 .bubbleTime {

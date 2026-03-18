@@ -4,8 +4,15 @@ const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 const { initializeDatabase } = require('./database/init');
 const { initializeSocket } = require('./socket/socketHandler');
+
+// Ensure required directories exist (important for Render/cloud deployment)
+const uploadsDir = path.join(__dirname, 'uploads');
+const dbDir = path.join(__dirname, 'database');
+if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
+if (!fs.existsSync(dbDir)) fs.mkdirSync(dbDir, { recursive: true });
 
 // Initialize Express
 const app = express();
